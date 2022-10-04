@@ -1,0 +1,1180 @@
+Last login: Sat Oct  1 13:16:25 on ttys000
+(base) jyoti@jyotis-MacBook-Air ~ % cd Documents
+(base) jyoti@jyotis-MacBook-Air Documents % ls
+0f171f15-9c00-417b-9925-1d8004d1255f-Capture.png
+DATA SCIENCE
+EM0A4891.jpg
+EM0A4903.jpg
+Gautam Thakur's Resume 3.pages
+Hivecasestudy.pem
+My Tableau Repository
+TABLEAU
+Terminal Saved Output-hive graded
+Test.pem
+Test_key_pair.pem
+hive case study 
+marriage certificate.JPG
+(base) jyoti@jyotis-MacBook-Air Documents % chmod 400 Hivecasestudy.pem
+(base) jyoti@jyotis-MacBook-Air Documents % ssh -i Hivecasestudy.pem hadoop@ec2-44-193-28-17.compute-1.amazonaws.com
+Last login: Sat Oct  1 08:05:00 2022
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+69 package(s) needed for security, out of 97 available
+Run "sudo yum update" to apply all updates.
+-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+                                                                    
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR    
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R   
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R 
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R 
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR   
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R  
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
+                                                                    
+[hadoop@ip-172-31-0-230 ~]$ hadoop fs -ls .user/hive
+ls: `.user/hive': No such file or directory
+[hadoop@ip-172-31-0-230 ~]$ hadoop fs -ls /user/hive
+Found 2 items
+drwxrwxrwx   - hadoop hadoop          0 2022-10-01 08:15 /user/hive/hivecasestudy
+drwxrwxrwt   - hdfs   hadoop          0 2022-10-01 08:09 /user/hive/warehouse
+[hadoop@ip-172-31-0-230 ~]$ hadoop fs -mkdir /user/hive/hivecasestudy
+mkdir: `/user/hive/hivecasestudy': File exists
+[hadoop@ip-172-31-0-230 ~]$ hadoop distcp 's3://e-commerce-events-ml/*' '/user/hive/hivecasestudy/'
+22/10/01 08:23:20 INFO tools.DistCp: Input Options: DistCpOptions{atomicCommit=false, syncFolder=false, deleteMissing=false, ignoreFailures=false, overwrite=false, skipCRC=false, blocking=true, numListstatusThreads=0, maxMaps=20, mapBandwidth=100, sslConfigurationFile='null', copyStrategy='uniformsize', preserveStatus=[], preserveRawXattrs=false, atomicWorkPath=null, logPath=null, sourceFileListing=null, sourcePaths=[s3://e-commerce-events-ml/*], targetPath=/user/hive/hivecasestudy, targetPathExists=true, filtersFile='null'}
+22/10/01 08:23:20 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-0-230.ec2.internal/172.31.0.230:8032
+22/10/01 08:23:25 INFO tools.SimpleCopyListing: Paths (files+dirs) cnt = 2; dirCnt = 0
+22/10/01 08:23:25 INFO tools.SimpleCopyListing: Build file listing completed.
+22/10/01 08:23:25 INFO Configuration.deprecation: io.sort.mb is deprecated. Instead, use mapreduce.task.io.sort.mb
+22/10/01 08:23:25 INFO Configuration.deprecation: io.sort.factor is deprecated. Instead, use mapreduce.task.io.sort.factor
+22/10/01 08:23:25 INFO tools.DistCp: Number of paths in the copy list: 2
+22/10/01 08:23:25 INFO tools.DistCp: Number of paths in the copy list: 2
+22/10/01 08:23:25 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-0-230.ec2.internal/172.31.0.230:8032
+22/10/01 08:23:25 INFO mapreduce.JobSubmitter: number of splits:2
+22/10/01 08:23:25 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1664610729152_0005
+22/10/01 08:23:26 INFO impl.YarnClientImpl: Submitted application application_1664610729152_0005
+22/10/01 08:23:26 INFO mapreduce.Job: The url to track the job: http://ip-172-31-0-230.ec2.internal:20888/proxy/application_1664610729152_0005/
+22/10/01 08:23:26 INFO tools.DistCp: DistCp job-id: job_1664610729152_0005
+22/10/01 08:23:26 INFO mapreduce.Job: Running job: job_1664610729152_0005
+22/10/01 08:23:34 INFO mapreduce.Job: Job job_1664610729152_0005 running in uber mode : false
+22/10/01 08:23:34 INFO mapreduce.Job:  map 0% reduce 0%
+22/10/01 08:23:55 INFO mapreduce.Job:  map 50% reduce 0%
+22/10/01 08:23:56 INFO mapreduce.Job:  map 100% reduce 0%
+22/10/01 08:24:10 INFO mapreduce.Job: Job job_1664610729152_0005 completed successfully
+22/10/01 08:24:11 INFO mapreduce.Job: Counters: 38
+	File System Counters
+		FILE: Number of bytes read=0
+		FILE: Number of bytes written=344916
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=896
+		HDFS: Number of bytes written=1028381690
+		HDFS: Number of read operations=26
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=8
+		S3: Number of bytes read=1028381690
+		S3: Number of bytes written=0
+		S3: Number of read operations=0
+		S3: Number of large read operations=0
+		S3: Number of write operations=0
+	Job Counters 
+		Launched map tasks=2
+		Other local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=2042752
+		Total time spent by all reduces in occupied slots (ms)=0
+		Total time spent by all map tasks (ms)=63836
+		Total vcore-milliseconds taken by all map tasks=63836
+		Total megabyte-milliseconds taken by all map tasks=65368064
+	Map-Reduce Framework
+		Map input records=2
+		Map output records=0
+		Input split bytes=270
+		Spilled Records=0
+		Failed Shuffles=0
+		Merged Map outputs=0
+		GC time elapsed (ms)=1189
+		CPU time spent (ms)=42940
+		Physical memory (bytes) snapshot=1116196864
+		Virtual memory (bytes) snapshot=6591324160
+		Total committed heap usage (bytes)=935329792
+	File Input Format Counters 
+		Bytes Read=626
+	File Output Format Counters 
+		Bytes Written=0
+	DistCp Counters
+		Bytes Copied=1028381690
+		Bytes Expected=1028381690
+		Files Copied=2
+[hadoop@ip-172-31-0-230 ~]$ hadoop fs -ls/user/hive/hivecasestudy/
+-ls/user/hive/hivecasestudy/: Unknown command
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-x] <path> ...]
+	[-expunge]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] <file>]
+	[-test -[defsz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are
+-conf <configuration file>     specify an application configuration file
+-D <property=value>            use value for given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>    specify a ResourceManager
+-files <comma separated list of files>    specify comma separated files to be copied to the map reduce cluster
+-libjars <comma separated list of jars>    specify comma separated jar files to include in the classpath.
+-archives <comma separated list of archives>    specify comma separated archives to be unarchived on the compute machines.
+
+The general command line syntax is
+command [genericOptions] [commandOptions]
+
+[hadoop@ip-172-31-0-230 ~]$ hadoop fs -ls /user/hive/hivecasestudy/
+Found 2 items
+-rw-r--r--   1 hadoop hadoop  545839412 2022-10-01 08:24 /user/hive/hivecasestudy/2019-Nov.csv
+-rw-r--r--   1 hadoop hadoop  482542278 2022-10-01 08:24 /user/hive/hivecasestudy/2019-Oct.csv
+[hadoop@ip-172-31-0-230 ~]$ haddop fs -cat /user/hive/hivecasestudy/2019-Nov.csv| head
+-bash: haddop: command not found
+[hadoop@ip-172-31-0-230 ~]$ hadoop fs -cat /user/hive/hivecasestudy/2019-Nov.csv| head
+event_time,event_type,product_id,category_id,category_code,brand,price,user_id,user_session
+2019-11-01 00:00:02 UTC,view,5802432,1487580009286598681,,,0.32,562076640,09fafd6c-6c99-46b1-834f-33527f4de241
+2019-11-01 00:00:09 UTC,cart,5844397,1487580006317032337,,,2.38,553329724,2067216c-31b5-455d-a1cc-af0575a34ffb
+2019-11-01 00:00:10 UTC,view,5837166,1783999064103190764,,pnb,22.22,556138645,57ed222e-a54a-4907-9944-5a875c2d7f4f
+2019-11-01 00:00:11 UTC,cart,5876812,1487580010100293687,,jessnail,3.16,564506666,186c1951-8052-4b37-adce-dd9644b1d5f7
+2019-11-01 00:00:24 UTC,remove_from_cart,5826182,1487580007483048900,,,3.33,553329724,2067216c-31b5-455d-a1cc-af0575a34ffb
+2019-11-01 00:00:24 UTC,remove_from_cart,5826182,1487580007483048900,,,3.33,553329724,2067216c-31b5-455d-a1cc-af0575a34ffb
+2019-11-01 00:00:25 UTC,view,5856189,1487580009026551821,,runail,15.71,562076640,09fafd6c-6c99-46b1-834f-33527f4de241
+2019-11-01 00:00:32 UTC,view,5837835,1933472286753424063,,,3.49,514649199,432a4e95-375c-4b40-bd36-0fc039e77580
+2019-11-01 00:00:34 UTC,remove_from_cart,5870838,1487580007675986893,,milv,0.79,429913900,2f0bff3c-252f-4fe6-afcd-5d8a6a92839a
+cat: Unable to write to output stream.
+[hadoop@ip-172-31-0-230 ~]$ hive
+
+Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j2.properties Async: false
+hive> create databases if not exists casestudy ;
+NoViableAltException(79@[846:1: ddlStatement : ( createDatabaseStatement | switchDatabaseStatement | dropDatabaseStatement | createTableStatement | dropTableStatement | truncateTableStatement | alterStatement | descStatement | showStatement | metastoreCheck | createViewStatement | createMaterializedViewStatement | dropViewStatement | dropMaterializedViewStatement | createFunctionStatement | createMacroStatement | createIndexStatement | dropIndexStatement | dropFunctionStatement | reloadFunctionStatement | dropMacroStatement | analyzeStatement | lockStatement | unlockStatement | lockDatabase | unlockDatabase | createRoleStatement | dropRoleStatement | ( grantPrivileges )=> grantPrivileges | ( revokePrivileges )=> revokePrivileges | showGrants | showRoleGrants | showRolePrincipals | showRoles | grantRole | revokeRole | setRole | showCurrentRole | abortTransactionStatement );])
+	at org.antlr.runtime.DFA.noViableAlt(DFA.java:158)
+	at org.antlr.runtime.DFA.predict(DFA.java:116)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.ddlStatement(HiveParser.java:3757)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.execStatement(HiveParser.java:2382)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1333)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:208)
+	at org.apache.hadoop.hive.ql.parse.ParseUtils.parse(ParseUtils.java:77)
+	at org.apache.hadoop.hive.ql.parse.ParseUtils.parse(ParseUtils.java:70)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:468)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1317)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1457)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1237)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1227)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:233)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:184)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:403)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:821)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:759)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:686)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:239)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:153)
+FAILED: ParseException line 1:7 cannot recognize input near 'create' 'databases' 'if' in ddl statement
+hive> create database if not exists casestudy ;
+OK
+Time taken: 0.355 seconds
+hive> sho databases ;
+NoViableAltException(24@[])
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1300)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:208)
+	at org.apache.hadoop.hive.ql.parse.ParseUtils.parse(ParseUtils.java:77)
+	at org.apache.hadoop.hive.ql.parse.ParseUtils.parse(ParseUtils.java:70)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:468)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1317)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1457)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1237)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1227)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:233)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:184)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:403)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:821)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:759)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:686)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:239)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:153)
+FAILED: ParseException line 1:0 cannot recognize input near 'sho' 'databases' '<EOF>'
+hive> show databases ;
+OK
+casestudy
+default
+hivecasestudy
+Time taken: 0.269 seconds, Fetched: 3 row(s)
+hive> use casestudy ;
+OK
+Time taken: 0.031 seconds
+hive> create table if not exists comm (event_time timestamp, event_type string , product_id string, category_id string , ctaegory_code string, brand string, price decimal (10,2),user_id bigint, user_session string ) row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde' stored as textfile location '/user/hive/hivecasestudy/' tblproperties ("skip.header.line.count" = "1" );
+OK
+Time taken: 0.387 seconds
+hive> select * from comm limit 5 ;
+OK
+2019-11-01 00:00:02 UTC	view	5802432	1487580009286598681			0.32	562076640	09fafd6c-6c99-46b1-834f-33527f4de241
+2019-11-01 00:00:09 UTC	cart	5844397	1487580006317032337			2.38	553329724	2067216c-31b5-455d-a1cc-af0575a34ffb
+2019-11-01 00:00:10 UTC	view	5837166	1783999064103190764		pnb	22.22	556138645	57ed222e-a54a-4907-9944-5a875c2d7f4f
+2019-11-01 00:00:11 UTC	cart	5876812	1487580010100293687		jessnai3.16	564506666	186c1951-8052-4b37-adce-dd9644b1d5f7
+2019-11-01 00:00:24 UTC	remove_from_cart	5826182	1487580007483048900	3.33	553329724	2067216c-31b5-455d-a1cc-af0575a34ffb
+Time taken: 2.561 seconds, Fetched: 5 row(s)
+hive> select month(event_time) as month , sum(price) as total_price from comm where event_type ='purchase' and month(event_time)=10 group by month(event_time) ; 
+Query ID = hadoop_20221001083232_27da3ed5-23dd-495f-87c5-db3b5a51b6d6
+Total jobs = 1
+Launching Job 1 out of 1
+Tez session was closed. Reopening...
+Session re-established.
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0007)
+
+Map 1: 0/2	Reducer 2: 0/2	
+Map 1: 0/2	Reducer 2: 0/2	
+Map 1: 0(+1)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 0(+2)/2	Reducer 2: 0/2	
+Map 1: 1(+1)/2	Reducer 2: 0/2	
+Map 1: 1(+1)/2	Reducer 2: 0(+1)/2	
+Map 1: 2/2	Reducer 2: 0(+2)/2	
+Map 1: 2/2	Reducer 2: 1(+1)/2	
+Map 1: 2/2	Reducer 2: 2/2	
+OK
+10	1211538.4299997438
+Time taken: 69.373 seconds, Fetched: 1 row(s)
+hive> set hive.vectorized.execution.enabled =true ;
+hive> set hive.vectorized.execution.enabled ;
+hive.vectorized.execution.enabled=true
+hive> set hive.exec.dynamic.partition.mode = nonstrict ;
+hive> set hive.exec.dynamic.partition.mode = true ;
+hive> create table if not exists comm_part (event_time timestamp, event_type string , product_id string, category_id string , category_code string, brand string, price float ,user_id bigint, user_session string )partitioned by (month int) clustered by (event_type) into 4 buckets row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde' stored as textfile ; 
+OK
+Time taken: 0.1 seconds
+hive> insert into table comm_part partition (month) select cast (replace(event_time ,'UTC','') as timestamp) , event_type , product_id , category_id , category_code , brand , price , user_id ,user_session , month(cast(replace(event_time , 'UTC', '') Display all 574 possibilities? (y or n)
+hive> insert into table comm_part partition (month) select cast (replace(event_time ,'UTC','') as timestamp) , event_type , product_id , category_id , category_code , brand , price , user_id ,user_session , month(cast(replace(event_time , 'UTC', '') as timestamp)) from comm ;  
+FAILED: SemanticException [Error 10004]: Line 1:145 Invalid table alias or column reference 'category_code': (possible column names are: event_time, event_type, product_id, category_id, ctaegory_code, brand, price, user_id, user_session)
+hive> insert into table comm_part partition (month) select cast (replace(event_time ,'UTC','') as timestamp) , event_type , product_id , category_id , ctaegory_code , brand , price , user_id ,user_session , month(cast(replace(event_time , 'UTC', '') as timestamp)) from comm ;  
+Query ID = hadoop_20221001085525_c43ed704-4447-45d7-883d-ca1cab18ef0e
+Total jobs = 1
+Launching Job 1 out of 1
+Tez session was closed. Reopening...
+Session re-established.
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0008)
+
+----------------------------------------------------------------------------------------------
+        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+----------------------------------------------------------------------------------------------
+Map 1 .......... container     SUCCEEDED      2          2        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      4          4        0        0       0       0  
+----------------------------------------------------------------------------------------------
+VERTICES: 02/02  [==========================>>] 100%  ELAPSED TIME: 202.54 s   
+----------------------------------------------------------------------------------------------
+Loading data to table casestudy.comm_part partition (month=null)
+
+Loaded : 2/2 partitions.
+	 Time taken to load dynamic partitions: 0.73 seconds
+	 Time taken for adding to write entity : 0.005 seconds
+OK
+Time taken: 214.538 seconds
+hive> select * from comm_part limit 5 ;
+OK
+2019-10-31 23:58:09	cart	5820756	1487580006317032337			2.22	553329724	2067216c-31b5-455d-a1cc-af0575a34ffb	10
+2019-10-31 23:58:09	cart	5665855	1487580013900333275		irisk	2.06	566272508	8f8a6160-24b9-47b3-881d-75798a7d45ad	10
+2019-10-31 23:57:08	cart	5850569	1998040852064109417			6.35	566272508	8f8a6160-24b9-47b3-881d-75798a7d45ad	10
+2019-10-31 23:57:05	cart	5850570	1998040852064109417			6.35	566272508	8f8a6160-24b9-47b3-881d-75798a7d45ad	10
+2019-10-31 23:56:54	cart	4653	1487580011157258342		runail	0.37	562691482	9025c3a5-9c56-49c4-9d3d-95a6c15b69a3	10
+Time taken: 0.194 seconds, Fetched: 5 row(s)
+hive> select month , sum(price) as total_price from comm_part where event_type ='purchase' and month =10 group by month ;
+Query ID = hadoop_20221001090054_580e2ee3-9617-4ce6-aa54-63a5342028f1
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0008)
+
+----------------------------------------------------------------------------------------------
+        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  
+----------------------------------------------------------------------------------------------
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 36.17 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 36.38 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 36.58 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 36.78 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 36.99 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 37.19 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 37.39 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 37.59 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 37.80 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 38.00 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 38.21 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 38.41 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 38.61 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 38.82 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 39.02 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 39.22 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 39.43 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 39.63 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 39.83 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 40.03 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 40.24 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 40.44 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 40.65 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 40.85 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 41.06 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 41.26 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 41.47 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 41.67 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 41.87 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 42.08 s    
+Map 1 .....      container       RUNNING      6          3        3        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=========>>-----------------] 37%   ELAPSED TIME: 42.28 s    
+Map 1 ......     container       RUNNING      6          4        2        0    ----------------------------------------------------------------------------------------------   container        INITED      2          0        0        2            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=============>>-------------] 50%   ELAPSED TIME: 42.48 s    
+Map 1 ......     container       RUNNING      6          4        2        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        1        1            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [=============>>-------------] 50%   ELAPSED TIME: 42.68 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        1        1            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 42.89 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 43.09 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 43.29 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 43.50 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 43.70 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 43.90 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 44.10 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 44.31 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 44.51 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 44.71 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 44.92 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 45.12 s    
+Map 1 ........   container       RUNNING      6          5        1        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [================>>----------] 62%   ELAPSED TIME: 45.32 s    
+Map 1 .......... container     SUCCEEDED      6          6        0        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          0        2        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [===================>>-------] 75%   ELAPSED TIME: 45.53 s    
+Map 1 .......... container     SUCCEEDED      6          6        0        0    ----------------------------------------------------------------------------------------------   container       RUNNING      2          1        1        0            VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED  ----------------------------------------------------------------------------------------------------------------------------------------------------------------2  [======================>>----] 87%   ELAPSED TIME: 45.73 s    
+Map 1 .......... container     SUCCEEDED      6          6        0        0       0       0  
+Reducer 2 ...... container     SUCCEEDED      2          2        0        0       0       0  
+----------------------------------------------------------------------------------------------
+VERTICES: 02/02  [==========================>>] 100%  ELAPSED TIME: 45.78 s    
+----------------------------------------------------------------------------------------------
+OK
+10	1211538.429999938
+Time taken: 47.743 seconds, Fetched: 1 row(s)
+hive> Display all 574 possibilities? (y or n)
+hive> select month , sum(price) as total_price from comm_part where event_type ='purchase' group by month ;
+Query ID = hadoop_20221001090250_f483e528-83d0-41ab-b877-128902b196a3
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0008)
+
+Map 1: 0/8	Reducer 2: 0/3	
+Map 1: 0/8	Reducer 2: 0/3	
+Map 1: 0/8	Reducer 2: 0/3	
+Map 1: 0(+2)/8	Reducer 2: 0/3	
+Map 1: 0(+3)/8	Reducer 2: 0/3	
+Map 1: 0(+3)/8	Reducer 2: 0/3	
+Map 1: 0(+3)/8	Reducer 2: 0/3	
+Map 1: 0(+3)/8	Reducer 2: 0/3	
+Map 1: 0(+3)/8	Reducer 2: 0/3	
+Map 1: 0(+3)/8	Reducer 2: 0/3	
+Map 1: 0(+3)/8	Reducer 2: 0/3	
+Map 1: 0(+3)/8	Reducer 2: 0/3	
+Map 1: 0(+3)/8	Reducer 2: 0/3	
+Map 1: 1(+3)/8	Reducer 2: 0/3	
+Map 1: 2(+3)/8	Reducer 2: 0/3	
+Map 1: 3(+3)/8	Reducer 2: 0/3	
+Map 1: 3(+3)/8	Reducer 2: 0/3	
+Map 1: 3(+3)/8	Reducer 2: 0/3	
+Map 1: 3(+3)/8	Reducer 2: 0/3	
+Map 1: 3(+3)/8	Reducer 2: 0/3	
+Map 1: 4(+3)/8	Reducer 2: 0/3	
+Map 1: 5(+2)/8	Reducer 2: 0/3	
+Map 1: 5(+3)/8	Reducer 2: 0/3	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	
+Map 1: 7(+1)/8	Reducer 2: 0(+2)/3	
+Map 1: 8/8	Reducer 2: 0(+3)/3	
+Map 1: 8/8	Reducer 2: 1(+2)/3	
+Map 1: 8/8	Reducer 2: 3/3	
+OK
+10	1211538.4299998013
+11	1531016.8999998884
+Time taken: 70.478 seconds, Fetched: 2 row(s)
+hive> select month , sum(price) as total_price, sum(price)-lag(sum(price)) over (order by month) from comm_part where event_type ='purchase' group by month ;
+Query ID = hadoop_20221001091331_0646216d-86b0-4360-8dd2-53d47a3c249a
+Total jobs = 1
+Launching Job 1 out of 1
+Tez session was closed. Reopening...
+Session re-established.
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0009)
+
+Map 1: -/-	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+1)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 1(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 1(+2)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 2(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 4(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 5(+2)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 5(+3)/8	Reducer 2: 0/3	Reducer 3: 0/2	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/2	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/2	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/2	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/2	
+Map 1: 7(+1)/8	Reducer 2: 0(+2)/3	Reducer 3: 0/2	
+Map 1: 8/8	Reducer 2: 0(+3)/3	Reducer 3: 0/2	
+Map 1: 8/8	Reducer 2: 1(+2)/3	Reducer 3: 0(+1)/2	
+Map 1: 8/8	Reducer 2: 2(+1)/3	Reducer 3: 0(+2)/2	
+Map 1: 8/8	Reducer 2: 3/3	Reducer 3: 0(+2)/2	
+Map 1: 8/8	Reducer 2: 3/3	Reducer 3: 2/2	
+OK
+10	1211538.4299998013	NULL
+11	1531016.8999998884	319478.47000008705
+Time taken: 79.422 seconds, Fetched: 2 row(s)
+hive> select distinct(ctaegory_code) from comm_part where ctaegory_code is not null ;
+FAILED: SemanticException [Error 10004]: Line 1:52 Invalid table alias or column reference 'ctaegory_code': (possible column names are: event_time, event_type, product_id, category_id, category_code, brand, price, user_id, user_session, month)
+hive> select distinct(category_code) from comm_part where category_code is not null ;
+Query ID = hadoop_20221001091641_f6dc894a-2882-4a9f-9c5f-6796e03997ac
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0009)
+
+Map 1: 0/8	Reducer 2: 0/5	
+Map 1: 0/8	Reducer 2: 0/5	
+Map 1: 0/8	Reducer 2: 0/5	
+Map 1: 0(+1)/8	Reducer 2: 0/5	
+Map 1: 0(+2)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 1(+3)/8	Reducer 2: 0/5	
+Map 1: 2(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 4(+3)/8	Reducer 2: 0/5	
+Map 1: 5(+2)/8	Reducer 2: 0/5	
+Map 1: 6(+1)/8	Reducer 2: 0/5	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/5	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/5	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/5	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/5	
+Map 1: 7(+1)/8	Reducer 2: 0(+2)/5	
+Map 1: 8/8	Reducer 2: 0(+2)/5	
+Map 1: 8/8	Reducer 2: 0(+3)/5	
+Map 1: 8/8	Reducer 2: 1(+3)/5	
+Map 1: 8/8	Reducer 2: 2(+3)/5	
+Map 1: 8/8	Reducer 2: 4(+1)/5	
+Map 1: 8/8	Reducer 2: 5/5	
+OK
+
+accessories.cosmetic_bag
+stationery.cartrige
+accessories.bag
+appliances.environment.vacuum
+furniture.living_room.chair
+sport.diving
+appliances.personal.hair_cutter
+appliances.environment.air_conditioner
+apparel.glove
+furniture.bathroom.bath
+furniture.living_room.cabinet
+Time taken: 71.305 seconds, Fetched: 12 row(s)
+hive> select category_code , count(product_id) as Product_count from comm_part where category_code is not null group by category_code ;
+Query ID = hadoop_20221001091938_b055a677-cd87-4a97-89f9-cebc769f19cb
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0009)
+
+Map 1: 0/8	Reducer 2: 0/5	
+Map 1: 0/8	Reducer 2: 0/5	
+Map 1: 0/8	Reducer 2: 0/5	
+Map 1: 0(+1)/8	Reducer 2: 0/5	
+Map 1: 0(+2)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 0(+3)/8	Reducer 2: 0/5	
+Map 1: 1(+3)/8	Reducer 2: 0/5	
+Map 1: 2(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 3(+3)/8	Reducer 2: 0/5	
+Map 1: 4(+3)/8	Reducer 2: 0/5	
+Map 1: 5(+2)/8	Reducer 2: 0/5	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/5	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/5	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/5	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/5	
+Map 1: 7(+1)/8	Reducer 2: 0(+2)/5	
+Map 1: 7(+1)/8	Reducer 2: 0(+2)/5	
+Map 1: 8/8	Reducer 2: 0(+3)/5	
+Map 1: 8/8	Reducer 2: 2(+2)/5	
+Map 1: 8/8	Reducer 2: 2(+3)/5	
+Map 1: 8/8	Reducer 2: 3(+2)/5	
+Map 1: 8/8	Reducer 2: 4(+1)/5	
+Map 1: 8/8	Reducer 2: 5/5	
+OK
+	8594895
+accessories.cosmetic_bag	1248
+stationery.cartrige	26722
+accessories.bag	11681
+appliances.environment.vacuum	59761
+furniture.living_room.chair	308
+sport.diving	2
+appliances.personal.hair_cutter	1643
+appliances.environment.air_conditioner	332
+apparel.glove	18232
+furniture.bathroom.bath	9857
+furniture.living_room.cabinet	13439
+Time taken: 71.682 seconds, Fetched: 12 row(s)
+hive> select brand , sum(price) as total_sales from comm_part where event_type ='purchase' group by brand order by sum(price) desc ;
+FAILED: SemanticException [Error 10004]: Line 1:113 Invalid table alias or column reference 'price': (possible column names are: brand, total_sales)
+hive> select brand , sum(price) as total_sales from comm_part where event_type ='purchase' group by brand order by total_sales  desc ;
+Query ID = hadoop_20221001092254_2b8c98a9-9a4b-4e34-8174-845d958131a5
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0009)
+
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+1)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 1(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 1(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 2(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 4(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 5(+2)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 5(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 7(+1)/8	Reducer 2: 0(+2)/3	Reducer 3: 0/1	
+Map 1: 8/8	Reducer 2: 0(+2)/3	Reducer 3: 0/1	
+Map 1: 8/8	Reducer 2: 0(+3)/3	Reducer 3: 0/1	
+Map 1: 8/8	Reducer 2: 1(+2)/3	Reducer 3: 0/1	
+Map 1: 8/8	Reducer 2: 2(+1)/3	Reducer 3: 0(+1)/1	
+Map 1: 8/8	Reducer 2: 3/3	Reducer 3: 0(+1)/1	
+Map 1: 8/8	Reducer 2: 3/3	Reducer 3: 1/1	
+OK
+	1094188.3000000368
+runail	148297.9399999991
+grattol	106918.25000000291
+irisk	92538.00000000003
+uno	86341.77999999987
+strong	67867.90000000002
+masura	64324.54999999887
+jessnail	59633.070000000334
+cnd	59240.77000000009
+ingarden	56727.60000000019
+italwax	46739.609999999826
+estel	45899.420000000086
+browxenna	29248.09999999998
+bpw.style	26409.590000000564
+kapous	26020.24000000001
+concept	24412.539999999855
+cosmoprofi	22859.800000000007
+beautix	22716.89999999998
+domix	22481.219999999914
+lianail	22287.080000000024
+haruyama	21743.59999999996
+max	21412.000000000004
+bluesky	20872.769999999924
+lovely	20643.439999999973
+yoko	20464.789999999986
+staleks	20395.34000000002
+pole	18366.089999999782
+oniq	18267.06000000002
+sunuv	17727.650000000012
+marathon	17553.85000000001
+polarus	17385.650000000005
+zinger	15876.61000000003
+f.o.x	15201.509999999982
+kinetics	13279.510000000042
+pnb	12801.089999999964
+metzger	11830.609999999986
+freedecor	11093.579999999954
+severina	10896.359999999968
+uskusi	10832.57999999999
+airnails	10810.419999999982
+smart	10359.399999999985
+nagaraku	9697.420000000031
+milv	9546.949999999964
+kaaral	9498.500000000004
+emil	8654.68
+roubloff	8405.130000000001
+shik	8180.920000000002
+thuya	7919.469999999998
+artex	7057.889999999999
+jas	6976.390000000006
+matrix	6969.990000000001
+rosi	6918.600000000003
+refectocil	6191.760000000009
+levrana	5907.66
+depilflax	5510.849999999994
+levissime	5312.810000000019
+art-visage	5090.510000000009
+swarovski	4931.089999999984
+nitrimax	4841.560000000005
+markell	4603.179999999998
+solomeya	4585.499999999995
+lador	4555.140000000005
+de.lux	4435.209999999975
+kaypro	4150.039999999999
+benovy	3669.5899999999992
+farmona	3535.8900000000003
+missha	3444.109999999999
+insight	3165.6600000000008
+limoni	3105.5
+kosmekka	2994.809999999999
+bodyton	2756.980000000001
+joico	2720.62
+zeitun	2718.290000000001
+gehwol	2646.75
+sophin	2583.3800000000015
+farmstay	2487.839999999997
+bioaqua	2341.0099999999993
+beauty-free	2337.0300000000025
+coifin	2331.4900000000002
+jaguar	2212.76
+lsanic	2193.0199999999995
+farmavita	2129.3399999999997
+petitfee	2118.7200000000003
+ardell	2099.3900000000012
+shary	2048.4499999999975
+nitrile	2009.9599999999991
+almea	1962.4099999999999
+happyfons	1893.5100000000011
+provoc	1891.8099999999984
+orly	1833.4700000000003
+dizao	1764.639999999999
+batiste	1646.57
+lamixx	1565.5299999999997
+konad	1550.5
+skinlite	1542.3900000000006
+ecolab	1477.1500000000003
+profhenna	1416.0799999999997
+osmo	1407.89
+sanoto	1366.8199999999997
+candy	1334.34
+s.care	1325.75
+beauugreen	1279.8600000000001
+lakme	1266.21
+kiss	1238.8799999999997
+entity	1198.9700000000012
+igrobeauty	1158.7300000000005
+siberina	1143.6399999999994
+cristalinas	1012.5799999999997
+kims	962.0799999999999
+kerasys	956.1100000000001
+yu-r	945.1200000000001
+koelf	930.0199999999998
+estelare	916.6800000000003
+kocostar	905.7800000000001
+chi	897.55
+ypsed	890.6800000000001
+mavala	855.36
+ellips	851.8899999999999
+trind	841.0300000000002
+godefroy	826.3399999999999
+freshbubble	821.04
+vosev	818.3000000000001
+lowence	810.5900000000001
+keune	786.7500000000001
+meisterwerk	775.73
+i-laq	737.73
+enigma	723.0199999999999
+keen	671.97
+cutrin	666.9900000000001
+protokeratin	658.0400000000001
+deoproce	646.01
+parachute	642.24
+inm	639.23
+likato	637.03
+latinoil	634.1099999999999
+nefertiti	600.16
+dermal	600.0700000000003
+eunyul	560.29
+laboratorium	559.02
+elskin	558.7400000000001
+biofollica	520.03
+greymy	518.6999999999999
+lebelage	499.6199999999999
+tertio	481.96000000000004
+miskin	451.11
+vilenta	428.80999999999995
+soleo	416.7299999999994
+riche	406.04999999999995
+nirvel	397.36999999999995
+naomi	389.00000000000006
+carmex	388.44000000000005
+coxir	381.44999999999993
+balbcare	367.71000000000004
+tannymaxx	359.48
+treaclemoon	344.86000000000007
+cruset	329.73
+finish	328.76
+mane	327.04999999999995
+fedua	316.19
+bergamo	314.66999999999996
+consly	313.61
+ladykin	296.21999999999997
+plazan	295.38
+litaline	291.0
+ecocraft	283.11
+coocla	281.43
+elizavecca	274.83
+aura	261.46
+labay	254.06
+egomania	223.51000000000002
+dr.gloderm	215.94000000000003
+profepil	211.38000000000005
+eos	206.95000000000002
+grace	203.52999999999997
+bespecial	193.43
+inoface	190.19000000000005
+beautyblender	188.15
+matreshka	182.67
+enjoy	177.92
+koelcia	168.25
+naturmed	166.41000000000003
+fancy	163.98999999999998
+mielle	162.48
+glysolid	161.32
+marutaka-foot	158.54999999999998
+biore	150.96000000000004
+sun	148.28
+kamill	144.5
+veraclara	121.32000000000001
+supertan	116.88000000000001
+foamie	115.53
+sawa	115.52
+blixz	102.34999999999998
+tosowoong	100.72999999999999
+neoleor	95.11
+koreatida	93.41
+dewal	61.28999999999999
+kares	59.45
+skipofit	48.64000000000001
+rasyan	47.739999999999995
+fly	44.309999999999995
+cosima	41.16
+enas	33.440000000000005
+frozen	28.7
+binacil	24.259999999999998
+andrea	22.16
+skinity	21.32
+juno	21.08
+bosnic	20.94
+tazol	19.13
+weaver	16.380000000000003
+lunaris	16.19
+moyou	15.990000000000002
+philips	15.440000000000001
+barbie	12.39
+dorena	12.38
+ovale	5.640000000000001
+rocknailstar	4.279999999999999
+helloganic	3.1
+Time taken: 70.563 seconds, Fetched: 219 row(s)
+hive> WITH  monnthly_sales AS (select brand , sum(CASE WHEN month(event_time)='10' then price else 0 end) as oct_rev,sum(CASE WHEN month(event_time)='11' then price else 0 end ) as nov_rev from comm_part where event_type ='purchase' group by brand ) select brand,nov_rev,oct_rev,(nov_rev-oct_rev) as  inc_sales from monthly_sales where (nov_rev-oct_rev)>0 order by inc_sales desc;
+FAILED: SemanticException [Error 10001]: Line 1:310 Table not found 'monthly_sales'
+hive> WITH  monthly_sales AS (select brand , sum(CASE WHEN month(event_time)='10' then price else 0 end) as oct_rev,sum(CASE WHEN month(event_time)='11' then price else 0 end ) as nov_rev from comm_part where event_type ='purchase' group by brand ) select brand,nov_rev,oct_rev,(nov_rev-oct_rev) as  inc_sales from monthly_sales where (nov_rev-oct_rev)>0 order by inc_sales desc;
+Query ID = hadoop_20221001094805_a827bcc3-4e70-4d39-8a67-7289ef3d6d91
+Total jobs = 1
+Launching Job 1 out of 1
+Tez session was closed. Reopening...
+Session re-established.
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0010)
+
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+2)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 1(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 2(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 4(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 5(+2)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 5(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 7(+1)/8	Reducer 2: 0(+2)/3	Reducer 3: 0/1	
+Map 1: 8/8	Reducer 2: 0(+2)/3	Reducer 3: 0/1	
+Map 1: 8/8	Reducer 2: 0(+3)/3	Reducer 3: 0/1	
+Map 1: 8/8	Reducer 2: 1(+2)/3	Reducer 3: 0(+1)/1	
+Map 1: 8/8	Reducer 2: 2(+1)/3	Reducer 3: 0(+1)/1	
+Map 1: 8/8	Reducer 2: 3/3	Reducer 3: 0(+1)/1	
+Map 1: 8/8	Reducer 2: 3/3	Reducer 3: 1/1	
+OK
+	619509.24000001	474679.06000002683	144830.17999998317
+grattol	71472.71000000264	35445.54000000027	36027.17000000237
+uno	51039.74999999982	35302.03000000006	15737.719999999761
+lianail	16394.24000000005	5892.8399999999765	10501.400000000072
+ingarden	33566.21000000015	23161.390000000043	10404.820000000109
+strong	38671.270000000004	29196.630000000012	9474.639999999992
+jessnail	33345.230000000156	26287.84000000018	7057.389999999978
+cosmoprofi	14536.99000000002	8322.809999999989	6214.180000000031
+polarus	11371.930000000004	6013.72	5358.210000000004
+runail	76758.65999999973	71539.27999999939	5219.380000000339
+freedecor	7671.799999999954	3421.78	4250.019999999953
+staleks	11875.610000000008	8519.73000000001	3355.8799999999974
+bpw.style	14837.440000000282	11572.150000000285	3265.2899999999972
+lovely	11939.059999999983	8704.379999999988	3234.679999999995
+marathon	10273.100000000006	7280.750000000004	2992.350000000002
+haruyama	12352.910000000047	9390.68999999991	2962.2200000001376
+yoko	11707.87999999999	8756.909999999998	2950.969999999992
+italwax	24799.369999999926	21940.239999999896	2859.13000000003
+benovy	3259.9699999999993	409.61999999999995	2850.3499999999995
+kaypro	3268.7	881.34	2387.3599999999997
+estel	24142.670000000082	21756.750000000007	2385.9200000000747
+concept	13380.399999999934	11032.139999999918	2348.2600000000166
+kapous	14093.080000000009	11927.16	2165.920000000009
+f.o.x	8577.279999999986	6624.229999999996	1953.0499999999902
+masura	33058.46999999982	31266.07999999904	1792.390000000778
+milv	5642.009999999993	3904.939999999972	1737.070000000021
+beautix	12222.949999999993	10493.949999999984	1729.000000000009
+artex	4327.249999999998	2730.6400000000003	1596.6099999999979
+domix	12009.169999999944	10472.04999999997	1537.1199999999735
+shik	4839.719999999999	3341.200000000002	1498.5199999999973
+smart	5902.139999999991	4457.259999999994	1444.8799999999974
+roubloff	4913.769999999999	3491.360000000002	1422.4099999999967
+levrana	3664.1	2243.5599999999995	1420.5400000000004
+oniq	9841.650000000007	8425.410000000013	1416.2399999999943
+irisk	46946.039999999986	45591.96000000002	1354.0799999999654
+severina	6120.479999999985	4775.879999999981	1344.600000000004
+joico	2015.1000000000001	705.52	1309.5800000000002
+zeitun	2009.6300000000008	708.66	1300.9700000000007
+beauty-free	1782.8600000000022	554.1700000000002	1228.6900000000019
+swarovski	3043.1599999999917	1887.9299999999917	1155.23
+de.lux	2775.509999999983	1659.6999999999919	1115.809999999991
+metzger	6457.159999999991	5373.449999999997	1083.7099999999937
+markell	2834.4299999999985	1768.749999999999	1065.6799999999994
+sanoto	1209.6799999999998	157.14	1052.54
+nagaraku	5327.68	4369.740000000031	957.9399999999696
+ecolab	1214.3000000000002	262.85	951.4500000000002
+art-visage	2997.8000000000047	2092.7100000000037	905.090000000001
+levissime	3085.3100000000095	2227.500000000009	857.8100000000004
+missha	2150.2799999999997	1293.8299999999995	856.4500000000003
+solomeya	2685.7999999999965	1899.6999999999985	786.0999999999981
+rosi	3841.5600000000013	3077.0400000000022	764.5199999999991
+refectocil	3475.580000000004	2716.180000000005	759.3999999999992
+kaaral	5086.069999999999	4412.430000000004	673.6399999999949
+kosmekka	1813.37	1181.4399999999996	631.9300000000003
+kinetics	6945.260000000014	6334.250000000029	611.0099999999848
+browxenna	14916.729999999992	14331.369999999984	585.3600000000079
+airnails	5691.520000000009	5118.899999999973	572.6200000000354
+uskusi	5690.310000000003	5142.269999999988	548.0400000000154
+coifin	1428.4900000000002	903.0	525.4900000000002
+s.care	913.07	412.68	500.39000000000004
+limoni	1796.6000000000004	1308.8999999999996	487.7000000000007
+matrix	3726.7400000000002	3243.25	483.49000000000024
+gehwol	1557.6799999999998	1089.0700000000002	468.6099999999997
+greymy	489.48999999999995	29.21	460.28
+bioaqua	1398.1199999999992	942.8900000000001	455.2299999999991
+farmavita	1291.9699999999998	837.37	454.5999999999998
+sophin	1515.520000000001	1067.8600000000006	447.6600000000003
+yu-r	673.71	271.40999999999997	402.30000000000007
+kiss	817.3299999999995	421.55000000000007	395.7799999999994
+naomi	389.00000000000006	0.0	389.00000000000006
+lador	2471.530000000002	2083.6100000000033	387.9199999999987
+ellips	606.04	245.84999999999997	360.19
+jas	3657.4300000000026	3318.9600000000028	338.4699999999998
+lowence	567.7500000000001	242.83999999999997	324.91000000000014
+nitrile	1162.6799999999998	847.2799999999995	315.4000000000003
+shary	1176.4899999999986	871.9599999999989	304.52999999999975
+kims	632.04	330.03999999999996	302.0
+happyfons	1091.5900000000006	801.9200000000005	289.6700000000001
+kocostar	594.9300000000001	310.85	284.08000000000004
+insight	1721.9600000000005	1443.7000000000007	278.25999999999976
+candy	799.3800000000001	534.9599999999999	264.4200000000002
+bluesky	10565.529999999995	10307.239999999927	258.2900000000682
+beauugreen	768.3500000000001	511.5100000000001	256.84000000000003
+protokeratin	456.7900000000001	201.25	255.54000000000008
+trind	542.96	298.07000000000005	244.89
+entity	719.2599999999996	479.71000000000146	239.5499999999982
+skinlite	890.4500000000003	651.9400000000003	238.51
+provoc	1063.8199999999993	827.9899999999993	235.82999999999993
+fedua	263.81	52.38	211.43
+ecocraft	241.95000000000005	41.160000000000004	200.79000000000005
+keen	435.62	236.34999999999997	199.27000000000004
+mane	260.26	66.78999999999999	193.47
+freshbubble	502.3400000000001	318.70000000000005	183.64000000000004
+matreshka	182.67	0.0	182.67
+chi	538.61	358.93999999999994	179.67000000000007
+cristalinas	584.9499999999998	427.6299999999999	157.31999999999994
+farmona	1843.4300000000005	1692.46	150.97000000000048
+latinoil	384.59	249.51999999999998	135.07
+miskin	293.07	158.04000000000002	135.02999999999997
+elizavecca	204.29999999999998	70.53	133.76999999999998
+nefertiti	366.64	233.52000000000007	133.11999999999992
+finish	230.38	98.38	132.0
+igrobeauty	645.0699999999999	513.6600000000004	131.4099999999995
+dizao	945.5100000000004	819.1299999999983	126.38000000000216
+osmo	762.3100000000002	645.5800000000002	116.73000000000002
+batiste	874.1699999999997	772.4000000000001	101.76999999999964
+carmex	243.36	145.08	98.28
+eos	152.61	54.339999999999996	98.27000000000001
+depilflax	2803.779999999998	2707.069999999996	96.71000000000186
+enjoy	136.57	41.349999999999994	95.22
+kerasys	525.2	430.9100000000001	94.28999999999996
+aura	177.50999999999996	83.95	93.55999999999996
+plazan	194.01	101.36999999999999	92.64
+koelf	507.2899999999999	422.7299999999999	84.56
+nirvel	234.32999999999996	163.04	71.28999999999996
+konad	810.67	739.8300000000002	70.8399999999998
+egomania	146.04000000000002	77.47	68.57000000000002
+cutrin	367.62	299.37000000000006	68.24999999999994
+laboratorium	312.52	246.49999999999994	66.02000000000004
+inm	351.21	288.02	63.19
+dewal	61.28999999999999	0.0	61.28999999999999
+marutaka-foot	109.33	49.21999999999999	60.11000000000001
+kares	59.45	0.0	59.45
+profhenna	736.8499999999999	679.2299999999998	57.62000000000012
+koelcia	112.75	55.49999999999999	57.25000000000001
+balbcare	212.38000000000002	155.33000000000004	57.04999999999998
+elskin	307.65000000000003	251.09000000000003	56.56
+foamie	80.49	35.04	45.449999999999996
+ladykin	170.57	125.64999999999999	44.92
+likato	340.9699999999999	296.06	44.90999999999991
+mavala	446.32000000000005	409.04	37.28000000000003
+vilenta	231.20999999999995	197.59999999999994	33.610000000000014
+beautyblender	109.41	78.74000000000001	30.669999999999987
+biore	90.31	60.650000000000006	29.659999999999997
+orly	931.0900000000003	902.3800000000001	28.71000000000015
+estelare	471.87	444.8100000000003	27.059999999999718
+profepil	118.02000000000002	93.36000000000001	24.66000000000001
+blixz	63.39999999999999	38.94999999999999	24.450000000000003
+binacil	24.259999999999998	0.0	24.259999999999998
+godefroy	425.12	401.22	23.899999999999977
+glysolid	91.59	69.72999999999999	21.860000000000014
+veraclara	71.21000000000001	50.11	21.10000000000001
+juno	21.08	0.0	21.08
+kamill	81.49000000000001	63.010000000000005	18.480000000000004
+treaclemoon	181.49	163.37000000000006	18.119999999999948
+supertan	66.51	50.370000000000005	16.14
+barbie	12.39	0.0	12.39
+deoproce	329.17	316.84000000000003	12.329999999999984
+rasyan	28.939999999999998	18.799999999999997	10.14
+fly	27.17	17.14	10.030000000000001
+tertio	245.79999999999998	236.16000000000003	9.639999999999958
+jaguar	1110.65	1102.11	8.540000000000191
+soleo	212.52999999999983	204.19999999999948	8.330000000000354
+neoleor	51.7	43.41	8.290000000000006
+moyou	10.280000000000001	5.71	4.570000000000001
+bodyton	1380.6400000000003	1376.3400000000001	4.300000000000182
+skinity	12.440000000000001	8.88	3.5600000000000005
+helloganic	3.1	0.0	3.1
+grace	102.60999999999999	100.91999999999996	1.6900000000000261
+cosima	20.93	20.229999999999997	0.7000000000000028
+ovale	3.1	2.54	0.56
+Time taken: 87.127 seconds, Fetched: 161 row(s)
+hive> select user_id , sum(price)as total_spent from comm_part where event_type='purchase' group by user_id order by total_spent desc limit 10 ;
+Query ID = hadoop_20221001095106_d7273d96-d22c-4a1b-8d8e-2f4ce09a9635
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1664610729152_0010)
+
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+1)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 0(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 1(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 2(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 3(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 4(+3)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 5(+2)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 6(+1)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 6(+2)/8	Reducer 2: 0(+1)/3	Reducer 3: 0/1	
+Map 1: 7(+1)/8	Reducer 2: 0(+2)/3	Reducer 3: 0/1	
+Map 1: 8/8	Reducer 2: 0(+3)/3	Reducer 3: 0/1	
+Map 1: 8/8	Reducer 2: 1(+2)/3	Reducer 3: 0(+1)/1	
+Map 1: 8/8	Reducer 2: 2(+1)/3	Reducer 3: 0(+1)/1	
+Map 1: 8/8	Reducer 2: 3/3	Reducer 3: 0(+1)/1	
+Map 1: 8/8	Reducer 2: 3/3	Reducer 3: 1/1	
+OK
+557790271	2715.869999999991
+150318419	1645.9699999999998
+562167663	1352.8499999999997
+531900924	1329.4500000000003
+557850743	1295.4800000000002
+522130011	1185.3899999999999
+561592095	1109.7000000000007
+431950134	1097.5899999999997
+566576008	1056.36
+521347209	1040.9099999999999
+Time taken: 73.07 seconds, Fetched: 10 row(s)
+hive> show databases ;
+OK
+casestudy
+default
+hivecasestudy
+Time taken: 0.011 seconds, Fetched: 3 row(s)
+hive> drop databases casestudy, hivecasestudy ;
+NoViableAltException(79@[846:1: ddlStatement : ( createDatabaseStatement | switchDatabaseStatement | dropDatabaseStatement | createTableStatement | dropTableStatement | truncateTableStatement | alterStatement | descStatement | showStatement | metastoreCheck | createViewStatement | createMaterializedViewStatement | dropViewStatement | dropMaterializedViewStatement | createFunctionStatement | createMacroStatement | createIndexStatement | dropIndexStatement | dropFunctionStatement | reloadFunctionStatement | dropMacroStatement | analyzeStatement | lockStatement | unlockStatement | lockDatabase | unlockDatabase | createRoleStatement | dropRoleStatement | ( grantPrivileges )=> grantPrivileges | ( revokePrivileges )=> revokePrivileges | showGrants | showRoleGrants | showRolePrincipals | showRoles | grantRole | revokeRole | setRole | showCurrentRole | abortTransactionStatement );])
+	at org.antlr.runtime.DFA.noViableAlt(DFA.java:158)
+	at org.antlr.runtime.DFA.predict(DFA.java:116)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.ddlStatement(HiveParser.java:3757)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.execStatement(HiveParser.java:2382)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1333)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:208)
+	at org.apache.hadoop.hive.ql.parse.ParseUtils.parse(ParseUtils.java:77)
+	at org.apache.hadoop.hive.ql.parse.ParseUtils.parse(ParseUtils.java:70)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:468)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1317)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1457)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1237)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1227)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:233)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:184)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:403)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:821)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:759)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:686)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:239)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:153)
+FAILED: ParseException line 1:5 cannot recognize input near 'drop' 'databases' 'casestudy' in ddl statement
+hive> drop database hivecasestudy ;
+FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. InvalidOperationException(message:Database hivecasestudy is not empty. One or more tables exist.)
+hive> drop database casestudy ;
+FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. InvalidOperationException(message:Database casestudy is not empty. One or more tables exist.)
+hive> 
